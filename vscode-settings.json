@@ -1,0 +1,40 @@
+{
+    "workbench.colorTheme": "One Monokai",
+    "editor.minimap.enabled": false,
+    "files.autoSave": "off",
+    "window.zoomLevel": 1,
+    "todohighlight.keywords":["N.B:"],
+    "editor.rulers": [
+        80
+    ],
+    "latex-workshop.view.pdf.viewer": "tab",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "python.defaultInterpreterPath": "/usr/bin/python3",
+    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.renderSideBySide": true,
+    "jupyter.askForKernelRestart": false,
+    "workbench.editorAssociations": [],
+
+    "files.associations": {
+        "**/defaults/**/*": "ansible",
+        "**/tasks/**/*.yml" : "ansible",
+        "**/handler/*.yml" : "ansible",
+        "**/*_vars/**/*.yml" : "ansible",
+        "**/roles/**/*.yml" : "ansible",
+        "**/playbooks/**/*.yml" : "ansible",
+        "**/*ansible*/**/*.yml" : "ansible",
+        "**/vars/**/*.yml": "ansible",
+        "**/inventory/*/*": "ansible"
+    },
+    "workbench.panel.defaultLocation": "right",
+    "terminal.integrated.automationShell.linux": "/usr/bin/zsh",
+    "terminal.integrated.shell.linux": "/usr/bin/zsh",
+    "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
+    "terminal.integrated.inheritEnv": false,
+    "launch": {
+        "configurations": [],
+        "compounds": []
+    },
+
+}
