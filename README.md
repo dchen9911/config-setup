@@ -13,6 +13,12 @@ Test whether a file exists or not (use -d for directory)
 test -f /home/dennis/Coding/box.py && echo "exists."
 ```
 
+Find a file
+
+```
+sudo find / -iname "*logid*" 
+```
+
 Compile options
 
 ```
@@ -24,3 +30,4 @@ Convert code to pdfs
 ```
 find . -name "*.cpp" -o -name "*.h" | sort | xargs enscript --color=1 -C -Ecpp -fCourier8 -o - | ps2pdf - code.pdf
 ```
+
