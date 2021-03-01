@@ -3,6 +3,7 @@ CFG_DIR=$HOME/config-setup
 
 # install VSCode
 if ! command -v code; then
+    cd /tmp
     wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
     sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
     sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
@@ -47,7 +48,7 @@ vim +PluginInstall +qall
 
 if ! command -v conda; then
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    bash Miniconda3-latest-Linux-x86_64.zsh
+    bash Miniconda3-latest-Linux-x86_64.sh
 fi
 
 # install rclone and rclonesync TODO: automate rclone setup
