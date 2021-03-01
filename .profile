@@ -26,4 +26,7 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-
+# set PATH so it includes custom scripts 
+if [ -d "$HOME/scripts"]; then
+    PATH="$HOME/scripts:$PATH"
+fi

@@ -1,0 +1,3 @@
+PATH=/home/dennis/.local/bin:$PATH
+rclonesync /home/dennis/gdrive gdrive: --filters-file /home/dennis/bin/gdrive_filter.txt
+
