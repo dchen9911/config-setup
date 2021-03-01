@@ -30,7 +30,7 @@ if ! [ -d "$HOME/.vim/bundle/Vundle.vim" ]; then
     # install vim 8.2 (or whatever the latest version is)
     sudo add-apt-repository ppa:jonathonf/vim
     sudo apt update
-    sudo apt install vim
+    sudo apt install -y vim
 
     # setup Vundle for vim
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -39,18 +39,15 @@ if ! [ -d "$HOME/.vim/bundle/Vundle.vim" ]; then
     vim +PluginInstall +qall
 
     # setup ycm
-    sudo apt install clang
-    sudo apt install build-essential cmake vim-nox python3-dev
-    sudo apt install mono-complete golang nodejs default-jdk npm
+    sudo apt install -y clang
+    sudo apt install -y build-essential cmake vim-nox python3-dev
     cd ~/.vim/bundle/YouCompleteMe
-    
     python3 install.py --all --clangd-completer
-
 fi
 
 # install ohmyzsh
 if ! command -v zsh; then
-    sudo apt install zsh
+    sudo apt install -i zsh
     chsh -s $(which zsh)
     cd /tmp
     wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
@@ -64,8 +61,6 @@ if ! command -v zsh; then
     sudo apt install -y autojump
 
 fi
-
-
 
 
 if ! command -v conda; then
