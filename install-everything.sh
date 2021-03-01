@@ -37,6 +37,15 @@ if ! [ -d "$HOME/.vim/bundle/Vundle.vim" ]; then
     ln -sf $CFG_DIR/.vimrc .vimrc
     # install required vim plugins
     vim +PluginInstall +qall
+
+    # setup ycm
+    sudo apt install clang
+    sudo apt install build-essential cmake vim-nox python3-dev
+    sudo apt install mono-complete golang nodejs default-jdk npm
+    cd ~/.vim/bundle/YouCompleteMe
+    
+    python3 install.py --all --clangd-completer
+
 fi
 
 # install ohmyzsh
