@@ -44,11 +44,22 @@ sh $CFG_DIR/setup_links.sh
 # install required vim plugins
 vim +PluginInstall +qall
 
-# install expect modules for ansible
-#sudo apt install -y python3-pexpect
-#sudo apt install -y expect
 
 if command -v conda; then
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86_64.zsh
 fi
+
+# install rclone and rclonesync TODO: automate rclone setup
+if command -v rclone; then
+    curl https://rclone.org/install.sh | sudo bash
+fi
+
+if [ -f "$HOME/.local/bin/rclonesync" ]; then
+    cd $HOME/.local/bin/rclonesync 
+    wget https://raw.githubusercontent.com/cjnaz/rclonesync-V2/master/rclonesync
+fi
+
+# install expect modules for ansible
+#sudo apt install -y python3-pexpect
+#sudo apt install -y expect
