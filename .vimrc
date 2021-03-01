@@ -24,6 +24,9 @@ Plugin 'morhetz/gruvbox'
 Plugin 'haya14busa/incsearch.vim'
 " for HTML coding (useless to me but guess ill keep it)
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"vundle managed nerdtree
+Plugin 'preservim/nerdtree'
+
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}

@@ -27,8 +27,16 @@ if ! command -v logid; then
 fi
 
 if ! [ -d "$HOME/.vim/bundle/Vundle.vim" ]; then
+    # install vim 8.2 (or whatever the latest version is)
+    sudo add-apt-repository ppa:jonathonf/vim
+    sudo apt update
+    sudo apt install vim
+
     # setup Vundle for vim
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    ln -sf $CFG_DIR/.vimrc .vimrc
+    # install required vim plugins
+    vim +PluginInstall +qall
 fi
 
 # install ohmyzsh
@@ -48,11 +56,7 @@ if ! command -v zsh; then
 
 fi
 
-# setup the symbolic links
-sh $CFG_DIR/setup_links.sh
 
-# install required vim plugins
-vim +PluginInstall +qall
 
 
 if ! command -v conda; then
@@ -74,3 +78,7 @@ fi
 # install expect modules for ansible
 #sudo apt install -y python3-pexpect
 #sudo apt install -y expect
+
+
+# setup the symbolic links
+sh $CFG_DIR/setup_links.sh
