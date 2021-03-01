@@ -38,9 +38,14 @@ if ! command -v zsh; then
     cd /tmp
     wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     sh install.sh
-    # install required fonts
+    # install required fonts/features
     sudo apt install -y fonts-powerline
-    sudo apt install -y autojump 
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+    # install additional features
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    sudo apt install -y autojump
+
 fi
 
 # setup the symbolic links
@@ -51,6 +56,7 @@ vim +PluginInstall +qall
 
 
 if ! command -v conda; then
+    cd /tmp
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86_64.sh
 fi
