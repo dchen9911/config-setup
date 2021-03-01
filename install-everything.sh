@@ -26,8 +26,10 @@ if ! command -v logid; then
     sudo make install
 fi
 
-# setup Vundle for vim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+if ! [ -d "$HOME/.vim/bundle/Vundle.vim" ]; then
+    # setup Vundle for vim
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
 
 # install ohmyzsh
 if ! command -v zsh; then
