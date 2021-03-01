@@ -44,9 +44,12 @@ if ! [ -d "$HOME/.vim/bundle/Vundle.vim" ]; then
     vim +PluginInstall +qall
 
     # setup ycm
-    sudo apt install -y clang
     sudo apt install -y build-essential cmake vim-nox python3-dev
     cd ~/.vim/bundle/YouCompleteMe
+    # update gcc (optional?)
+    sudo apt install -y g++-8
+    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 700 --slave /usr/bin/g++ g++ /usr/bin/g++-7
+    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 800 --slave /usr/bin/g++ g++ /usr/bin/g++-8
     python3 install.py --all --clangd-completer
 fi
 
