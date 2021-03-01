@@ -2,7 +2,7 @@
 CFG_DIR=$HOME/config-setup
 
 # install VSCode
-if command -v code; then
+if ! command -v code; then
     wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
     sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
     sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
@@ -13,7 +13,7 @@ if command -v code; then
 fi 
 
 # install logid
-if command -v logid; then
+if ! command -v logid; then
     sudo apt install -y cmake libevdev-dev libudev-dev libconfig++-dev
     cd /tmp
     git clone https://github.com/PixlOne/logiops
@@ -29,7 +29,7 @@ fi
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # install ohmyzsh
-if command -v zsh; then
+if ! command -v zsh; then
     cd /tmp
     wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     sh install.sh
@@ -45,13 +45,13 @@ sh $CFG_DIR/setup_links.sh
 vim +PluginInstall +qall
 
 
-if command -v conda; then
+if ! command -v conda; then
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86_64.zsh
 fi
 
 # install rclone and rclonesync TODO: automate rclone setup
-if command -v rclone; then
+if ! command -v rclone; then
     curl https://rclone.org/install.sh | sudo bash
 fi
 
