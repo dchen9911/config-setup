@@ -13,6 +13,11 @@ if ! command -v code; then
     sudo apt install -y code 
 fi 
 
+# install xterm for resizing terminal
+if ! command -v resize; then
+    sudo apt install -y xterm
+fi
+
 # install logid
 if ! command -v logid; then
     sudo apt install -y cmake libevdev-dev libudev-dev libconfig++-dev
