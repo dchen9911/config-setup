@@ -1,8 +1,8 @@
 {
     "workbench.colorTheme": "One Monokai",
     "editor.minimap.enabled": false,
-    "files.autoSave": "off",
-    "window.zoomLevel": 1,
+    "files.autoSave": "afterDelay",
+    "window.zoomLevel": 3,
     "todohighlight.keywords":["N.B:"],
     "editor.rulers": [
         80
@@ -14,7 +14,12 @@
     "diffEditor.ignoreTrimWhitespace": true,
     "diffEditor.renderSideBySide": true,
     "jupyter.askForKernelRestart": false,
-    "workbench.editorAssociations": [],
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
 
     "files.associations": {
         "**/defaults/**/*": "ansible",

@@ -133,3 +133,12 @@ nmap <F6> :NERDTreeToggle<CR>
 
 " toggle line numbers with G7
 nmap <F7> :set invnumber<CR>
+
+" auto bracket and quote
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
