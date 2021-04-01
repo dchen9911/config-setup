@@ -30,3 +30,11 @@ fi
 if [ -d "$HOME/scripts" ]; then
     PATH="$HOME/scripts:$PATH"
 fi
+
+# include CUDA if it exists 
+if [ -d "/usr/local/cuda-10.0/lib64" ]; then
+    PATH="/usr/local/cuda-10.0/bin:$PATH"
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.0/lib64
+fi
+
+

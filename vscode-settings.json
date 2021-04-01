@@ -2,7 +2,6 @@
     "workbench.colorTheme": "One Monokai",
     "editor.minimap.enabled": false,
     "files.autoSave": "afterDelay",
-    "window.zoomLevel": 3,
     "todohighlight.keywords":["N.B:"],
     "editor.rulers": [
         80
@@ -41,5 +40,6 @@
         "configurations": [],
         "compounds": []
     },
+    "window.zoomLevel": 2,
 
 }

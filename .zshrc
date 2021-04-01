@@ -119,6 +119,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
+alias resync_gdrive='rclonesync $HOME/gdrive gdrive: --filters-file $HOME/scripts/gdrive_filter.txt --first-sync'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( vcs dir rbenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status anaconda time)
@@ -128,5 +129,4 @@ POWERLEVEL9K_SHORTEN_DELIMITER=""
 
 
 . /usr/share/autojump/autojump.sh
-
 
