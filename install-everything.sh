@@ -124,3 +124,5 @@ sh $CFG_DIR/setup_links.sh
 
 # finally install the plugins
 vim +PlugInstall +qall
+
+# TODO: Also install the coc-pyright and coc-clangd extensions

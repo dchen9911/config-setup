@@ -23,12 +23,12 @@ Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 
 " multiple cursors
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 
 " auto pair for brackets and quote
 Plug 'jiangmiao/auto-pairs'
 
-" auto surround bracket and quotes
+" TODO (learn): auto surround bracket and quotes
 Plug 'tpope/vim-surround'
 
 " async lint engine
@@ -56,7 +56,6 @@ call plug#end()
 
 
 " -------------------------- non plugin stuff
-
 " show line numbers
 set number
 
@@ -68,7 +67,6 @@ set hidden
 
 " copies register to external clipboard
 vnoremap <C-x> y:let @+=@"<CR>
-
 
 " theme stuff
 " colorscheme onehalfdark
@@ -125,6 +123,7 @@ inoremap <C-b> <C-o>dw
 " make backspace more powerful
 set backspace=indent,eol,start
 
+" TODO:  change this to save to clipboard and have C-v paste it again?
 inoremap <C-x> <C-o>dd
 
 " for better searching
@@ -171,7 +170,7 @@ map! <S-Insert> <MiddleMouse>
 "    \ set expandtab
 "    \ set autoindent
 "    \ set fileformat=unix
-let python_highlight_all=1
+" let python_highlight_all=1
 
 " execute macro over visual block
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
@@ -181,8 +180,8 @@ function! ExecuteMacroOverVisualRange()
   execute ":'<,'>normal @".nr2char(getchar())
 endfunction
 
-
 " -------------------- syntastic settings -----------------------
+" TODO: populate with polyglot stuff instead
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -248,7 +247,6 @@ nmap <Leader>c7 <Plug>lightline#bufferline#delete(7)
 nmap <Leader>c8 <Plug>lightline#bufferline#delete(8)
 nmap <Leader>c9 <Plug>lightline#bufferline#delete(9)
 nmap <Leader>c0 <Plug>lightline#bufferline#delete(10)
-
 " ----------------------  All the coc stuff: -----------------------
 " Some servers have issues with backup files, see #649.
 set nobackup
@@ -326,4 +324,5 @@ nmap <leader>f  <Plug>(coc-format-selected)
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
-
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
