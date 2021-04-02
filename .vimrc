@@ -1,94 +1,119 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" for coc and ale 
+let g:ale_disable_lsp = 1
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" autocomplete plugin
-Plugin 'ycm-core/YouCompleteMe'
-" shows the buffers currently opened
-Plugin 'bling/vim-bufferline'
-" makes it look a bit nicer
-Plugin 'morhetz/gruvbox'
-" incremental search
-Plugin 'haya14busa/incsearch.vim'
-" for HTML coding (useless to me but guess ill keep it)
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-"vundle managed nerdtree
-Plugin 'preservim/nerdtree'
-" for C apparently
-Plugin 'c.vim'
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
+" To learn later:
+" Plug 'junegunn/vim-easy-align'
+"
+" Browsing github events in vim :GHA! user/repo
+Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" Multiple Plug commands can be written in a single line using | separators
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" On-demand loading
+Plug 'preservim/nerdtree'
+
+" Nicer status line
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
+
+" multiple cursors
+Plug 'terryma/vim-multiple-cursors'
+
+" auto pair for brackets and quote
+Plug 'jiangmiao/auto-pairs'
+
+" auto surround bracket and quotes
+Plug 'tpope/vim-surround'
+
+" async lint engine
+Plug 'w0rp/ale'
+
+" incremental searching
+Plug 'haya14busa/incsearch.vim'
+
+" themes of course
+"Plug 'morhetz/gruvbox'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+
+" intellisense + completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Plugin outside ~/.vim/plugged with post-update hook
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+
+" Initialize plugin system
+call plug#end()
+
 
 " -------------------------- non plugin stuff
 
-" for switching tabs (not used)
-map <C-t><up> :tabr<cr>
-map <C-t><down> :tabl<cr>
-map <C-t><left> :tabp<cr>
-map <C-t><right> :tabn<cr>
+" show line numbers
+set number
 
+" for lightline to load on start up
+set laststatus=2
+
+" hides buffers when theyre not being used
+set hidden
+
+" theme stuff
+colorscheme onehalfdark
+" set background=dark
+set cursorline
+syntax on
+" 256 colours set
+set t_Co=256
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+" Nerdtree windows size settings
 let g:netrw_winsize = 20
 let g:netrw_liststyle = 3 "changes the directory tree style to style 3, press i to cycle through the styles temporarily
 let g:netrw_banner = 0 "gets rid of the top banner  
 let g:netrw_browse_split = 4 "will open files in previous buffer
 
-" show line numbers
-set number
-
-" show buffers by pressing f5
-nnoremap <F5> :buffers<CR>:buffer<Space>
-
-
-" use NERDTree as file explorer plugin
-autocmd vimenter * NERDTree
-
 " also open NERDTree automatically if no files specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-autocmd VimEnter * wincmd l
-
 filetype plugin indent on
+
 " show existing tab with 4 spaces width
 set tabstop=4
+
 " when indenting with '>', use 4 spaces width
 set shiftwidth=4
+
+"make < > shifts keep selection
+vnoremap < <gv
+vnoremap > >gv
 
 " On pressing tab, insert 4 spaces
 set expandtab
 set autoindent
 
-" gruvbox which makes things prettier
-colorscheme gruvbox
-set background=dark
+" toggle nerd tree with F6
+nmap <F6> :NERDTreeToggle<CR>
 
-" remap ctrl backspace to delete a word
-" imap <C-BS> <C-W>
-" workaround for terminal vim
-noremap! <C-BS> <C-w>
-noremap! <C-h> <C-w>
+" toggle line numbers with G7
+nmap <F7> :set invnumber<CR>
 
+
+" use ctrl-b to delete word in front
 inoremap <C-b> <C-o>dw
-
 " make backspace more powerful
 set backspace=indent,eol,start
+
 
 " for better searching
 map /  <Plug>(incsearch-forward)
@@ -125,21 +150,47 @@ vnoremap <C-S-Up> :m '<-2<CR>gv=gv
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
 
-"make < > shifts keep selection
-vnoremap < <gv
-vnoremap > >gv
+" execute macro over visual block
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 
-" toggle nerd tree with F6
-nmap <F6> :NERDTreeToggle<CR>
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
 
-" toggle line numbers with G7
-nmap <F7> :set invnumber<CR>
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['close'] ]
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ }
+      \ }
+let g:lightline#bufferline#show_number=2
+let g:lightline#bufferline#shorten_path = 0
+let g:lightline#bufferline#unnamed      = '[No Name]'
 
-" auto bracket and quote
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+set showtabline=0
+" press F5 to toggle
+noremap <F5> :execute 'set showtabline=' . (&showtabline ==# 0 ? 2 : 0)<CR>
+
+autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
+
+nmap <C-b>1 <Plug>lightline#bufferline#go(1)
+nmap <C-b>2 <Plug>lightline#bufferline#go(2)
+nmap <C-b>3 <Plug>lightline#bufferline#go(3)
+nmap <C-b>4 <Plug>lightline#bufferline#go(4)
+nmap <C-b>5 <Plug>lightline#bufferline#go(5)
+nmap <C-b>6 <Plug>lightline#bufferline#go(6)
+nmap <C-b>7 <Plug>lightline#bufferline#go(7)
+nmap <C-b>8 <Plug>lightline#bufferline#go(8)
+nmap <C-b>9 <Plug>lightline#bufferline#go(9)
+nmap <C-b>0 <Plug>lightline#bufferline#go(10)
