@@ -30,18 +30,22 @@ else
     echo "scripts folder already exists so skipping link creation"
 fi
 
-if [ -f /etc/logid.cfg ]; then 
+if ! [ -f /etc/logid.cfg ]; then 
     echo Adding link for logid 
     sudo ln -sf $CFG_DIR/logid.cfg /etc/logid.cfg
 else
     echo "/etc/logid.cfg already exists so skipping link creation"
 fi
 
-if [ -d "$HOME/.config/Code/User" ]; then 
-    echo "Adding vscode json link"
-    ln -sf $CFG_DIR/vscode-settings.json .config/Code/User/settings.json 
+if ! [ -f "$HOME/.config/Code/User/settings.json" ]; then 
+    if [ -d "$HOME/.config/Code/User/settings.json" ]; then
+        echo VScode not installed, please install and then rerun the script
+    else
+        echo "Adding vscode json link"
+        ln -sf $CFG_DIR/vscode-settings.json .config/Code/User/settings.json 
+    fi
 else
-    echo "vscode not installed, please install and then rerun the script"
+    echo "vscode settings.json already exists so skipping link creation" 
 fi
 
 

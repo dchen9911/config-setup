@@ -28,9 +28,4 @@ else
     echo "nodejs already installed"
 fi
 
-# finally install the plugins
-vim +PlugInstall +qall
-
-# actually finally install the extensions to coc
-vim +"CocInstall coc-pyright coc-clangd coc-sh coc-prettier" +qall
 

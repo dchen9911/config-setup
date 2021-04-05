@@ -108,7 +108,7 @@ inoremap <C-b> <C-o>dw
 " make it easier to copy paste lines in normal and insert mode
 nmap <leader>x Vx
 nmap <leader>c Vy
-imap <C-x> Vx
+imap <C-x> <C-O>Vx
 
 " for better searching
 map /  <Plug>(incsearch-forward)

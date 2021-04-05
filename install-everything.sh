@@ -118,11 +118,20 @@ fi
 #sudo apt install -y python3-pexpect
 #sudo apt install -y expect
 
+sh $CFG_DIR/scripts/unlink.sh
 
-# setup the symbolic links
-sh $CFG_DIR/setup_links.sh
+echo "---------- Installing vim now ---------------"
+sh $CFG_DIR/scripts/install-vim.sh
 
+
+echo "-----------Linking files now ---------------"
+sh $CFG_DIR/scripts/setup-links.sh
+
+
+echo "----------- Installing vim plugins + extensions ---------------"
 # finally install the plugins
 vim +PlugInstall +qall
 
-# TODO: Also install the coc-pyright and coc-clangd extensions
+# actually finally install the extensions to coc
+vim +"CocInstall -sync coc-pyright coc-clangd coc-sh coc-prettier" +qall
+

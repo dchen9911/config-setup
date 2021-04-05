@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# resize but doesnt work
-source <(/usr/bin/resize -s)
-/usr/bin/resize -s 40 115
-/usr/bin/vim "$@"
-/usr/bin/resize -s $LINES $COLUMNS
