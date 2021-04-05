@@ -55,7 +55,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 
-" -------------------------- non plugin stuff
+
+
+" -------------------------- general settings ------------------------
 " show line numbers
 set number
 
@@ -65,38 +67,7 @@ set laststatus=2
 " hides buffers when theyre not being used
 set hidden
 
-" copies register to external clipboard
-vnoremap <C-x> y:let @+=@"<CR>
-
-" theme stuff
-" colorscheme onehalfdark
-" colorscheme gruvbox
-colorscheme onedark
-set background=dark
-
-set cursorline
 syntax on
-" 256 colours set
-set t_Co=256
-
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-
-" Nerdtree windows size settings
-let g:netrw_winsize = 20
-let g:netrw_liststyle = 3 "changes the directory tree style to style 3, press i to cycle through the styles temporarily
-let g:netrw_banner = 0 "gets rid of the top banner  
-let g:netrw_browse_split = 4 "will open files in previous buffer
-
-" also open NERDTree automatically if no files specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" toggle nerd tree with F6
-nmap <F6> :NERDTreeToggle<CR>
 
 filetype plugin indent on
 
@@ -114,17 +85,30 @@ vnoremap > >gv
 set expandtab
 set autoindent
 
-" toggle line numbers with G7
-nmap <F7> :set invnumber<CR>
-
-
-" use ctrl-b to delete word in front
-inoremap <C-b> <C-o>dw
 " make backspace more powerful
 set backspace=indent,eol,start
 
-" TODO:  change this to save to clipboard and have C-v paste it again?
-inoremap <C-x> <C-o>dd
+
+
+
+
+" ------------------------ Macros + remappings -------------------------
+" copies register to external clipboard
+vnoremap <C-x> y:let @+=@"<CR>
+
+" toggle nerd tree with F6
+nmap <F6> :NERDTreeToggle<CR>
+
+" toggle line numbers with G7
+nmap <F7> :set invnumber<CR>
+
+" use ctrl-b to delete word in front
+inoremap <C-b> <C-o>dw
+
+" make it easier to copy paste lines in normal and insert mode
+nmap <leader>x Vx
+nmap <leader>c Vy
+imap <C-x> Vx
 
 " for better searching
 map /  <Plug>(incsearch-forward)
@@ -180,16 +164,37 @@ function! ExecuteMacroOverVisualRange()
   execute ":'<,'>normal @".nr2char(getchar())
 endfunction
 
-" -------------------- syntastic settings -----------------------
-" TODO: populate with polyglot stuff instead
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+
+
+" ------------------- theme settings ---------------------
+" colorscheme onehalfdark
+" colorscheme gruvbox
+colorscheme onedark
+set background=dark
+
+set cursorline
+" 256 colours set
+set t_Co=256
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+" ----------------------- Nerdtree windows size settings ----------------
+let g:netrw_winsize = 20
+let g:netrw_liststyle = 3 "changes the directory tree style to style 3, press i to cycle through the styles temporarily
+let g:netrw_banner = 0 "gets rid of the top banner  
+let g:netrw_browse_split = 4 "will open files in previous buffer
+
+" also open NERDTree automatically if no files specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+
+
 
 
 " ------------------ TODO: all the lightline and bufferline settings  -----------------
