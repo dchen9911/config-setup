@@ -130,4 +130,6 @@ POWERLEVEL9K_SHORTEN_DELIMITER=""
 
 . /usr/share/autojump/autojump.sh
 
-alias vim="/usr/bin/resize -s 40 115;/usr/bin/vim "$@";/usr/bin/resize -s $LINES $COLUMNS"
+alias v=vim
+alias vl=vim_large
+alias vf=vim_fullscreen
