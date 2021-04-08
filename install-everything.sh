@@ -24,9 +24,23 @@ else
     echo xterm already installed
 fi
 
+if ! command -v curl; then
+    echo "Installed curl"
+    sudo apt install -y curl
+else
+    echo curl already installed
+fi
+
+if ! command -v "g++"; then
+    echo "Installing g++"
+    sudo apt install g++ -y
+else
+    echo g++ already installed
+fi
+
 # install logid
 if ! command -v logid; then
-    echo "Installed logid"
+    echo "Installing logid"
     sudo apt install -y cmake libevdev-dev libudev-dev libconfig++-dev
     cd /tmp
     git clone https://github.com/PixlOne/logiops
@@ -40,38 +54,10 @@ else
     echo "logid already installed"
 fi
 
-# install the latest version of vim 
-if vim --version | head -n 4 | grep "Vi IMproved 8" ; then
-    echo "Vim is version 8 so skipping"
-else
-    # install vim 8.2 (or whatever the latest version is)
-    echo "Installing latest version of vim"
-    sudo add-apt-repository ppa:jonathonf/vim
-    sudo apt update
-    sudo apt install -y vim    
-    echo "Done installing"
-fi
-
-# install vim plug
-if ! [ -f "$HOME/.vim/autoload/plug.vim" ]; then
-    echo "installing vim plug"
-     ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-else
-    echo "vim-plug already install so skipping"
-fi
-
-if ! command -v node; then
-    echo "Installing nodejs"
-    sudo apt install -y nodejs
-else
-    echo "nodejs already installed"
-fi
-
 # install ohmyzsh
 if ! command -v zsh; then
     echo "Installing zsh"
-    sudo apt install -i zsh
+    sudo apt install -y zsh
     chsh -s $(which zsh)
     cd /tmp
     wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
@@ -92,6 +78,8 @@ if ! command -v conda; then
     cd /tmp
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86_64.sh
+    # set conda to not be auto activated
+    conda config --set auto_activate_base false
 else
     echo Miniconda already installed
 fi

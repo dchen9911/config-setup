@@ -42,6 +42,7 @@ if ! [ -f "$HOME/.config/Code/User/settings.json" ]; then
         echo VScode not installed, please install and then rerun the script
     else
         echo "Adding vscode json link"
+	mkdir -p .config/Code/User
         ln -sf $CFG_DIR/vscode-settings.json .config/Code/User/settings.json 
     fi
 else

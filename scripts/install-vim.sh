@@ -15,7 +15,7 @@ fi
 # install vim plug
 if ! [ -f "$HOME/.vim/autoload/plug.vim" ]; then
     echo "installing vim plug"
-     ~/.vim/autoload/plug.vim --create-dirs \
+    curl -fLo  ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 else
     echo "vim-plug already install so skipping"
