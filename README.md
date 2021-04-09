@@ -4,6 +4,20 @@ Repo containing config dotfiles for various different things in Ubuntu so that I
 Should also contain bash scripts and Ansible playbooks for setting everything up
 
 
+### To save and reload terminal config files:
+
+To save in a a file
+
+```
+dconf dump /org/gnome/terminal/legacy/profiles:/ > gnome-terminal-profiles.dconf
+```
+
+Then to reload it
+
+```
+dconf load /org/gnome/terminal/legacy/profiles:/ < gnome-terminal-profiles.dconf
+```
+
 
 ### Notes Area/Handy Commands
 

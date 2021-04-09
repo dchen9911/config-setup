@@ -1,0 +1,30 @@
+[:3cc14ab2-9f28-4d92-abaa-6ffde6749dc8]
+use-theme-colors=false
+cursor-shape='block'
+use-system-font=false
+visible-name='Normal'
+audible-bell=true
+
+[/]
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', '3cc14ab2-9f28-4d92-abaa-6ffde6749dc8']
+default='b1dcc9dd-5262-4d8d-a863-c897e6d979b9'
+
+[:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+foreground-color='rgb(211,215,207)'
+visible-name='Experimental'
+login-shell=false
+cell-width-scale=1.0
+palette=['rgb(76,76,76)', 'rgb(220,50,47)', 'rgb(126,187,201)', 'rgb(181,137,0)', 'rgb(255,174,119)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(105,105,105)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']
+default-size-rows=27
+default-size-columns=86
+cursor-shape='block'
+use-custom-command=false
+use-theme-colors=false
+use-system-font=false
+use-transparent-background=true
+font='DejaVu Sans Mono 12'
+use-theme-transparency=true
+cursor-blink-mode='system'
+background-color='rgb(46,52,54)'
+background-transparency-percent=1
+audible-bell=true

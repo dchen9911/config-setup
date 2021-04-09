@@ -31,6 +31,16 @@ else
     echo curl already installed
 fi
 
+if ! command -v "typora"; then 
+    echo "Installing typora"
+    wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+    sudo add-apt-repository 'deb https://typora.io/linux ./' -y
+    sudo apt-get update
+    sudo apt-get install typora -y
+else
+    echo typora already installed
+fi
+
 if ! command -v "g++"; then
     echo "Installing g++"
     sudo apt install g++ -y
@@ -123,3 +133,5 @@ vim +PlugInstall +qall
 # actually finally install the extensions to coc
 vim +"CocInstall -sync coc-pyright coc-clangd coc-sh coc-prettier" +qall
 
+# also load in the terminal settings
+dconf load /org/gnome/terminal/legacy/profiles:/ < $CFG_DIR/gnome-terminal-profiles.dconf
