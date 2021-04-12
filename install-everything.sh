@@ -135,3 +135,8 @@ vim +"CocInstall -sync coc-pyright coc-clangd coc-sh coc-prettier" +qall
 
 # also load in the terminal settings
 dconf load /org/gnome/terminal/legacy/profiles:/ < $CFG_DIR/gnome-terminal-profiles.dconf
+
+# configure windows to autoraise
+gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
+gsettings set org.gnome.desktop.wm.preferences focus-new-windows 'strict'
+

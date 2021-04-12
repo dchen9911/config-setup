@@ -18,6 +18,9 @@ Then to reload it
 dconf load /org/gnome/terminal/legacy/profiles:/ < gnome-terminal-profiles.dconf
 ```
 
+### Rclone notes
+
+Manually copy from `$HOME/.config/rclone/rclone.conf`; contains gdrive token so better not put on git
 
 ### Notes Area/Handy Commands
 
