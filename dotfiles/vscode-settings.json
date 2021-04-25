@@ -34,12 +34,15 @@
     "workbench.panel.defaultLocation": "right",
     "terminal.integrated.automationShell.linux": "/usr/bin/zsh",
     "terminal.integrated.shell.linux": "/usr/bin/zsh",
-    "terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
-    "terminal.integrated.inheritEnv": false,
+    "terminal.integrated.fontFamily": "monospace",
+    // "terminal.integrated.inheritEnv": false,
     "launch": {
         "configurations": [],
         "compounds": []
     },
-    "window.zoomLevel": 3,
+    "window.zoomLevel": 2,
+    "terminal.integrated.inheritEnv": false,
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4 }",
+    "snippets.snippetsLocation": "/home/dennis/.config/Code/User/globalStorage/tahabasri.snippets/data.json",
 
 }

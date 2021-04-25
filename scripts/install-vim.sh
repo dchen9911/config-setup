@@ -35,3 +35,10 @@ if ! command -v clangd; then
 else
     echo "clangd already installed"
 fi
+
+if ! [ dpkg --list | grep "vim-gnome" ]; then
+    echo "installing vim-gnome"
+    sudo apt install -y vim-gnome
+else
+    echo "vim-gnome already installed"
+fi

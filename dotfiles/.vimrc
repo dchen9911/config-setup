@@ -48,6 +48,9 @@ Plug 'sheerun/vim-polyglot'
 " intellisense + completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" for easier commenting
+Plug 'preservim/nerdcommenter'
+
 " Plugin outside ~/.vim/plugged with post-update hook
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
@@ -88,8 +91,9 @@ set autoindent
 " make backspace more powerful
 set backspace=indent,eol,start
 
-
-
+set autochdir
+" autochdir is flaky so use this if it dont work 
+" autocmd BufEnter  *  silent! lcd %:p:h:gs/ /\\ /
 
 
 " ------------------------ Macros + remappings -------------------------
@@ -108,7 +112,9 @@ inoremap <C-b> <C-o>dw
 " make it easier to copy paste lines in normal and insert mode
 nmap <leader>x Vx
 nmap <leader>c Vy
-imap <C-x> <C-O>Vx
+imap <C-x> <C-O>Vy
+inoremap <C-v> <C-O>k<C-O>p
+inoremap <C-d> <C-O>Vx
 
 " for better searching
 map /  <Plug>(incsearch-forward)
@@ -331,3 +337,5 @@ command! -nargs=0 Format :call CocAction('format')
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
+
+
