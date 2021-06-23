@@ -133,3 +133,5 @@ POWERLEVEL9K_SHORTEN_DELIMITER=""
 alias v=vim
 alias vl=vim_large
 alias vf=vim_fullscreen
+
+export PAGER="most"

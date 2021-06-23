@@ -22,7 +22,7 @@ dconf load /org/gnome/terminal/legacy/profiles:/ < gnome-terminal-profiles.dconf
 
 Manually copy from `$HOME/.config/rclone/rclone.conf`; contains gdrive token so better not put on git
 
-### Notes Area/Handy Commands
+## Handy Commands
 
 Test whether a file exists or not (use -d for directory)
 
@@ -34,6 +34,34 @@ Find a file
 
 ```
 sudo find / -iname "*logid*" 
+```
+
+## gsettings
+
+All gsettings have the following:
+
+- `describe`: display what setting it represents
+- `range`: display the values it accepts as input
+- `get`: get the current value for the setting
+- `set`: sets the value for the setting
+- `reset`: resets to factory default (I assume)
+
+```bash
+# Show directories first in the file explorer:
+gsettings set org.gtk.Settings.FileChooser sort-directories-first true
+
+# sets the accelleration profile to 'flat'
+gsettings set org.gnome.desktop.peripherals.mouse accel-profile 'flat'
+```
+
+
+
+### Notify send options
+
+Icons are from 
+
+```
+c/usr/share/icons/gnome/32x32
 ```
 
 Compile options
@@ -50,7 +78,9 @@ find . -name "*.cpp" -o -name "*.h" | sort | xargs enscript --color=1 -C -Ecpp -
 
 What is stored in each root folder:
 
-``` bin for binary: the place where the most essential commands are stored
+``` 
+bin for binary: the place where the most essential commands are stored
+
 boot: there are files related to the system's operation at startup,
 
 dev: special directory corresponding to the devices of the system, e.g. disks, terminal, mouse keyboard
@@ -78,6 +108,9 @@ var for variable: contains files that vary during the system's runtime, such as 
 
 ## TODO:
 
-Use an alias for simple one line commands (e.g. google drive sync)
+- [x] Use an alias for simple one line commands (e.g. google drive sync)
 
-Setup nvim with intellisense of autocomplete
+ - [x] Send push notification to ubuntu if sync fails
+ - [ ] Setup nvim with intellisense of autocomplete
+ - [ ] Change vim keybindings so it doesn't conflict with tmux
+
