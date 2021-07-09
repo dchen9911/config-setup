@@ -1,8 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# conda setup goes here
-__conda_setup="$('/home/dennis/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/dennis/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
@@ -13,7 +14,8 @@ else
     fi
 fi
 unset __conda_setup
-#
+# <<< conda initialize <<<
+
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/dennis/.oh-my-zsh"
@@ -133,5 +135,10 @@ POWERLEVEL9K_SHORTEN_DELIMITER=""
 alias v=vim
 alias vl=vim_large
 alias vf=vim_fullscreen
+alias show_dir_first="gsettings set org.gtk.Settings.FileChooser sort-directories-first true"
+alias show_dir_unordered="gsettings set org.gtk.Settings.FileChooser sort-directories-first false"
 
 export PAGER="most"
+
+export CDPATH='/home/dennis/gdrive:/home/dennis/Coding'
+
