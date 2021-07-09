@@ -23,7 +23,7 @@ fi
 
 if ! command -v node; then
     echo "Installing nodejs"
-    curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+    curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
     sudo apt-get install -y nodejs
 else
     echo "nodejs already installed"

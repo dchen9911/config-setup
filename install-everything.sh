@@ -133,7 +133,7 @@ vim +PlugInstall +qall
 # actually finally install the extensions to coc
 vim +"CocInstall -sync coc-pyright coc-clangd coc-sh coc-prettier" +qall
 
-# also load in the terminal settings
+# also load in the terminal settings TODO: change this to compare modify dates
 dconf load /org/gnome/terminal/legacy/profiles:/ < $CFG_DIR/gnome-terminal-profiles.dconf
 
 
