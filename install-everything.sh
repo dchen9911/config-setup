@@ -1,6 +1,25 @@
 #!/bin/sh
 CFG_DIR=$HOME/config-setup
- 
+
+# for spotify
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
+
+# install ckb-next for resizing terminal
+if ! command -v ckb-next; then
+    echo "Installing ckb-next"
+    sudo apt install -y ckb-next
+else
+    echo ckb-next already installed
+fi
+
+# install ckb-next for resizing terminal
+if ! command -v imwheel; then
+    echo "Installing imwheel"
+    sudo apt install -y imwheel
+else
+    echo imwheel already installed
+fi
+
 # install VSCode
 if ! command -v code; then
     echo "Installing VSCode"
@@ -74,24 +93,13 @@ if ! command -v zsh; then
     sh install.sh
     # install required fonts/features
     sudo apt install -y fonts-powerline
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/themes/powerlevel10k
 
     # install additional features
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     sudo apt install -y autojump
 else
     echo "zsh already installed"
-fi
-
-if ! command -v conda; then
-    echo "Installing miniconda"
-    cd /tmp
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    bash Miniconda3-latest-Linux-x86_64.sh
-    # set conda to not be auto activated
-    conda config --set auto_activate_base false
-else
-    echo Miniconda already installed
 fi
 
 # install rclone and rclonesync TODO: automate rclone setup
@@ -112,9 +120,6 @@ else
     echo rclonesync already installed
 fi
 
-# install expect modules for ansible
-#sudo apt install -y python3-pexpect
-#sudo apt install -y expect
 
 sh $CFG_DIR/scripts/unlink.sh
 
@@ -137,3 +142,18 @@ vim +"CocInstall -sync coc-pyright coc-clangd coc-sh coc-prettier" +qall
 dconf load /org/gnome/terminal/legacy/profiles:/ < $CFG_DIR/gnome-terminal-profiles.dconf
 
 
+if ! command -v conda; then
+    echo "Installing mambaforge"
+    cd /tmp
+    wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+    bash Mambaforge-Linux-x86_64.sh
+    # set conda to not be auto activated
+    conda config --set auto_activate_base false
+else
+    echo Miniconda already installed
+fi
+
+
+# install expect modules for ansible
+#sudo apt install -y python3-pexpect
+#sudo apt install -y expect

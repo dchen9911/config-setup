@@ -1,5 +1,6 @@
 #!/bin/sh
 DOTFILES_DIR=$HOME/config-setup/dotfiles
+CFGFILES_DIR=$HOME/config-setup/configs
 CFG_DIR=$HOME/config-setup
 
 cd $HOME
@@ -34,7 +35,7 @@ fi
 
 if ! [ -f /etc/logid.cfg ]; then 
     echo Adding link for logid 
-    sudo ln -sf $DOTFILES_DIR/logid.cfg /etc/logid.cfg
+    sudo ln -sf $CFGFILES_DIR/logid.cfg /etc/logid.cfg
 else
     echo "/etc/logid.cfg already exists so skipping link creation"
 fi
@@ -45,7 +46,7 @@ if ! [ -f "$HOME/.config/Code/User/settings.json" ]; then
     else
         echo "Adding vscode json link"
 	mkdir -p .config/Code/User
-        ln -sf $DOTFILES_DIR/vscode-settings.json .config/Code/User/settings.json 
+        ln -sf $CFGFILES_DIR/vscode-settings.json .config/Code/User/settings.json 
     fi
 else
     echo "vscode settings.json already exists so skipping link creation" 
@@ -54,7 +55,14 @@ fi
 
 if ! [ -f "$HOME/.vim/coc-settings.json" ]; then 
     echo Adding link coc-settings.json
-    sudo ln -sf $DOTFILES_DIR/coc-settings.json "$HOME/.vim/coc-settings.json"
+    sudo ln -sf $CFGFILES_DIR/coc-settings.json "$HOME/.vim/coc-settings.json"
 else
     echo "coc-settings.json already exists so skipping"
+fi
+
+if ! [ -f "$HOME/.imwheelrc" ]; then 
+    echo Adding link .imwheelrc 
+    sudo ln -sf $DOTFILES_DIR/.imwheelrc "$HOME/.imwheelrc"
+else
+    echo ".imwheelrc already exists so skipping"
 fi
