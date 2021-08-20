@@ -87,7 +87,11 @@ fi
 if ! command -v zsh; then
     echo "Installing zsh"
     sudo apt install -y zsh
-    chsh -s $(which zsh)
+
+    # add zsh to list of shells 
+    command -v zsh | sudo tee -a /etc/shells
+    sudo chsh -s "$(command -v zsh)" "${USER}" 
+    
     cd /tmp
     wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     sh install.sh

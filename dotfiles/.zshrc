@@ -3,14 +3,14 @@
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/dennis/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/dennis/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/dennis/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/dennis/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/dennis/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/home/dennis/mambaforge/etc/profile.d/conda.sh"
     else
-        export PATH="/home/dennis/miniconda3/bin:$PATH"
+        export PATH="/home/dennis/mambaforge/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -121,7 +121,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
-alias resync_gdrive='rclonesync $HOME/gdrive gdrive: --filters-file $HOME/scripts/gdrive_filter.txt --first-sync'
+alias resync_gdrive='rclonesync $HOME/gdrive gdrive: --filters-file $HOME/scripts/gdrive_filter.txt --first-sync --rclone-args --drive-acknowledge-abuse'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( vcs dir rbenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status anaconda time)
@@ -138,7 +138,12 @@ alias vf=vim_fullscreen
 alias show_dir_first="gsettings set org.gtk.Settings.FileChooser sort-directories-first true"
 alias show_dir_unordered="gsettings set org.gtk.Settings.FileChooser sort-directories-first false"
 
-export PAGER="most"
 
 export CDPATH='/home/dennis/gdrive:/home/dennis/Coding'
 
+# Use colors for less, man, etc.
+[[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
+
+# also make it do syntax highlighting on source code
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
