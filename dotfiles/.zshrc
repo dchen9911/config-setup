@@ -124,7 +124,7 @@ source $ZSH/oh-my-zsh.sh
 alias resync_gdrive='rclonesync $HOME/gdrive gdrive: --filters-file $HOME/scripts/gdrive_filter.txt --first-sync --rclone-args --drive-acknowledge-abuse'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( vcs dir rbenv)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status anaconda time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_SHORTEN_DELIMITER=""
@@ -138,6 +138,10 @@ alias vf=vim_fullscreen
 alias show_dir_first="gsettings set org.gtk.Settings.FileChooser sort-directories-first true"
 alias show_dir_unordered="gsettings set org.gtk.Settings.FileChooser sort-directories-first false"
 
+alias connect-openvpn="openvpn3 session-start --config $HOME/.config/client.ovpn"
+alias disconnect-openvpn="openvpn3 session-manage --disconnect -c $HOME/.config/client.ovpn"
+alias status-openvpn="openvpn3 sessions-list"
+alias auto-connect-openvpn='python /home/dennis/scripts/connect_vpn.py'
 
 export CDPATH='/home/dennis/gdrive:/home/dennis/Coding'
 

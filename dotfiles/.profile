@@ -37,4 +37,8 @@ if [ -d "/usr/local/cuda-10.0/lib64" ]; then
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.0/lib64
 fi
 
+export PATH=$PATH:/usr/local/go/bin
+
+export PATH=$PATH:/home/dennis/go/bin/
+
 

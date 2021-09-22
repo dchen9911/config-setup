@@ -22,8 +22,6 @@ Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 
-" multiple cursors
-" Plug 'terryma/vim-multiple-cursors'
 
 " auto pair for brackets and quote
 Plug 'jiangmiao/auto-pairs'
