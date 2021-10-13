@@ -1,5 +1,10 @@
 #!/bin/sh
 
+echo "---------- Installing vim now ---------------"
+
+
+DOTFILES_DIR=$HOME/config-setup/dotfiles
+
 # install the latest version of vim 
 if vim --version | head -n 4 | grep "Vi IMproved 8" ; then
     echo "Vim is version 8 so skipping"
@@ -42,3 +47,17 @@ if ! [ dpkg --list | grep "vim-gnome" ]; then
 else
     echo "vim-gnome already installed"
 fi
+
+if ! [ -f .vimrc ]; then 
+    echo Adding link for vimrc 
+    ln -sf $DOTFILES_DIR/.vimrc .vimrc
+else
+    echo "vimrc already exists so skipping link creation"
+fi
+
+echo "----------- Installing vim plugins + extensions ---------------"
+# finally install the plugins
+vim +PlugInstall +qall
+
+# actually finally install the extensions to coc
+vim +"CocInstall -sync coc-pyright coc-clangd coc-sh coc-prettier" +qall

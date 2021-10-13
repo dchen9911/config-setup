@@ -105,20 +105,12 @@ sh $CFG_DIR/scripts/install_zsh.sh
 
 sh $CFG_DIR/scripts/unlink.sh
 
-echo "---------- Installing vim now ---------------"
 sh $CFG_DIR/scripts/install-vim.sh
 
 
 echo "-----------Linking files now ---------------"
 sh $CFG_DIR/scripts/setup-links.sh
 
-
-echo "----------- Installing vim plugins + extensions ---------------"
-# finally install the plugins
-vim +PlugInstall +qall
-
-# actually finally install the extensions to coc
-vim +"CocInstall -sync coc-pyright coc-clangd coc-sh coc-prettier" +qall
 
 # also load in the terminal settings TODO: change this to compare modify dates
 dconf load /org/gnome/terminal/legacy/profiles:/ < $CFG_DIR/gnome-terminal-profiles.dconf

@@ -7,10 +7,10 @@ __conda_setup="$('/home/dennis/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/dennis/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/home/dennis/mambaforge/etc/profile.d/conda.sh"
+    if [ -f "/home/${USER}/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/home/${USER}/mambaforge/etc/profile.d/conda.sh"
     else
-        export PATH="/home/dennis/mambaforge/bin:$PATH"
+        export PATH="/home/${USER}/mambaforge/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -18,7 +18,7 @@ unset __conda_setup
 
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/dennis/.oh-my-zsh"
+export ZSH="/home/${USER}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -141,9 +141,9 @@ alias show_dir_unordered="gsettings set org.gtk.Settings.FileChooser sort-direct
 alias connect-openvpn="openvpn3 session-start --config $HOME/.config/client.ovpn"
 alias disconnect-openvpn="openvpn3 session-manage --disconnect -c $HOME/.config/client.ovpn"
 alias status-openvpn="openvpn3 sessions-list"
-alias auto-connect-openvpn='python /home/dennis/scripts/connect_vpn.py'
+alias auto-connect-openvpn='python /home/${USER}/scripts/connect_vpn.py'
 
-export CDPATH='/home/dennis/gdrive:/home/dennis/Coding'
+export CDPATH='/home/${USER}/gdrive:/home/${USER}/Coding'
 
 # Use colors for less, man, etc.
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP

@@ -26,7 +26,7 @@ fi
 
 if ! [ -f .zshrc ]; then 
     echo Adding link for zshrc 
-    ln -sf $DOTFILES_DIR/.zshrc .zshrc
+    ln -sf $DOTFILES_DIR/.zshrc $HOME/.zshrc
 else
     echo "zshrc already exists so skipping link creation"
 fi
