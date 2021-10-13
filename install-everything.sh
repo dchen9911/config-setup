@@ -83,29 +83,6 @@ else
     echo "logid already installed"
 fi
 
-# install ohmyzsh
-if ! command -v zsh; then
-    echo "Installing zsh"
-    sudo apt install -y zsh
-
-    # add zsh to list of shells 
-    command -v zsh | sudo tee -a /etc/shells
-    sudo chsh -s "$(command -v zsh)" "${USER}" 
-    
-    cd /tmp
-    wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-    sh install.sh
-    # install required fonts/features
-    sudo apt install -y fonts-powerline
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/themes/powerlevel10k
-
-    # install additional features
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    sudo apt install -y autojump
-else
-    echo "zsh already installed"
-fi
-
 # install rclone and rclonesync TODO: automate rclone setup
 if ! command -v rclone; then
     echo Installing rclone
@@ -124,6 +101,7 @@ else
     echo rclonesync already installed
 fi
 
+sh $CFG_DIR/scripts/install_zsh.sh
 
 sh $CFG_DIR/scripts/unlink.sh
 

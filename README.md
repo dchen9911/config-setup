@@ -54,6 +54,14 @@ gsettings set org.gtk.Settings.FileChooser sort-directories-first true
 gsettings set org.gnome.desktop.peripherals.mouse accel-profile 'flat'
 ```
 
+## systemctl
+
+Also a very useful tool
+
+```
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+```
+
 
 
 ### Notify send options

@@ -1,15 +1,14 @@
 {
     "workbench.colorTheme": "One Monokai",
     "editor.minimap.enabled": false,
-    "files.autoSave": "afterDelay",
     "todohighlight.keywords":["N.B:"],
     "editor.rulers": [
         80
     ],
+    "editor.mouseWheelScrollSensitivity": 1,
     "latex-workshop.view.pdf.viewer": "tab",
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "python.defaultInterpreterPath": "/usr/bin/python3",
     "diffEditor.ignoreTrimWhitespace": true,
     "diffEditor.renderSideBySide": true,
     "jupyter.askForKernelRestart": false,
@@ -31,15 +30,26 @@
     "workbench.panel.defaultLocation": "right",
     "terminal.integrated.automationShell.linux": "/usr/bin/zsh",
     "terminal.integrated.shell.linux": "/usr/bin/zsh",
-    "terminal.integrated.fontFamily": "monospace",
-    // "terminal.integrated.inheritEnv": false,
+    "terminal.integrated.fontFamily": "courier, PowerlineSymbols",
+    "terminal.integrated.inheritEnv": false,
     "launch": {
         "configurations": [],
         "compounds": []
     },
-    "window.zoomLevel": 2,
-    "terminal.integrated.inheritEnv": false,
     "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4 }",
     "snippets.snippetsLocation": "/home/dennis/.config/Code/User/globalStorage/tahabasri.snippets/data.json",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "window.zoomLevel": 1,
 
 }
