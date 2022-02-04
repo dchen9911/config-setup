@@ -3,7 +3,7 @@
 PATH=$HOME/.local/bin:$PATH # for rclonesync  
 PATH=/usr/bin:$PATH # for notify-send 
 
-rclonesync $HOME/gdrive gdrive: --filters-file $HOME/scripts/gdrive_filter.txt --remove-empty-directories > /$HOME/logs/gdrive-sync.log 2>&1 
+rclonesync $HOME/gdrive gdrive: --filters-file $HOME/scripts/gdrive_filter.txt --remove-empty-directories --rclone-args --drive-skip-gdocs --drive-skip-shortcuts > /$HOME/logs/gdrive-sync.log 2>&1 
 
 if [ $? -ne 0 ]; then
    XDG_RUNTIME_DIR=/run/user/$(id -u) notify-send -i face-crying  gdrive-sync "gdrive sync failed" --urgency=critical

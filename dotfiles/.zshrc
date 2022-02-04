@@ -121,7 +121,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
-alias resync_gdrive='rclonesync $HOME/gdrive gdrive: --filters-file $HOME/scripts/gdrive_filter.txt --first-sync --rclone-args --drive-acknowledge-abuse'
+alias resync_gdrive='rclonesync $HOME/gdrive gdrive: --filters-file $HOME/scripts/gdrive_filter.txt --first-sync --rclone-args --drive-acknowledge-abuse --drive-skip-gdocs --drive-skip-shortcuts'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( vcs dir rbenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
@@ -142,6 +142,9 @@ alias connect-openvpn="openvpn3 session-start --config $HOME/.config/client.ovpn
 alias disconnect-openvpn="openvpn3 session-manage --disconnect -c $HOME/.config/client.ovpn"
 alias status-openvpn="openvpn3 sessions-list"
 alias auto-connect-openvpn='python /home/${USER}/scripts/connect_vpn.py'
+alias "c=xclip -selection c"
+alias "v=xclip -o"
+alias restart_logid="sudo kill -9 $(pgrep logid); sleep 1; sudo logid -v & disown"
 
 export CDPATH='/home/${USER}/gdrive:/home/${USER}/Coding'
 

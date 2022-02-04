@@ -50,7 +50,7 @@ fi
 
 if ! [ -f .vimrc ]; then 
     echo Adding link for vimrc 
-    ln -sf $DOTFILES_DIR/.vimrc .vimrc
+    ln -sf $DOTFILES_DIR/.vimrc $HOME/.vimrc
 else
     echo "vimrc already exists so skipping link creation"
 fi
